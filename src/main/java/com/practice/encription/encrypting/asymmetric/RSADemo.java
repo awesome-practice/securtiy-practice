@@ -1,4 +1,4 @@
-package com.practice.security.encrypting.asymmetric;
+package com.practice.encription.encrypting.asymmetric;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
@@ -8,6 +8,7 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
@@ -74,7 +75,7 @@ public class RSADemo {
         String msg = "hello, every one";
         KeyPair keyPair = getKeyPair();
 
-        byte[] bytes = encryptByPublicKey(msg.getBytes("utf-8"), keyPair.getPublic());
+        byte[] bytes = encryptByPublicKey(msg.getBytes(StandardCharsets.UTF_8), keyPair.getPublic());
         String base64encode = base64Encoder.encode(bytes);
         System.out.println("base64encode = " + base64encode);
 
@@ -93,7 +94,7 @@ public class RSADemo {
         System.out.println("base64PublicKey = " + base64PublicKey);
         PublicKey publicKey = parsePublicKey(base64PublicKey);
 
-        byte[] bytesOfEncryptedContent = encryptByPublicKey(msg.getBytes("utf-8"), publicKey);
+        byte[] bytesOfEncryptedContent = encryptByPublicKey(msg.getBytes(StandardCharsets.UTF_8), publicKey);
         String base64encodeContent = base64Encoder.encode(bytesOfEncryptedContent);
         System.out.println("base64encodeContent = " + base64encodeContent);
 

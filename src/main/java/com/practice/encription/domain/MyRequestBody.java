@@ -1,4 +1,4 @@
-package com.practice.security.domain;
+package com.practice.encription.domain;
 
 /**
  * @author Luo Bao Ding

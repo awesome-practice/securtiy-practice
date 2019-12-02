@@ -1,6 +1,6 @@
-package com.practice.security.controller;
+package com.practice.encription.controller;
 
-import com.practice.security.domain.MyRequestBody;
+import com.practice.encription.domain.MyRequestBody;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

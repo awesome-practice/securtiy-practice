@@ -1,8 +1,7 @@
-package com.practice.security.encrypting.symmetric;
+package com.practice.encription.encrypting.symmetric;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
@@ -55,32 +54,26 @@ public class AESDemo {
         SecretKey secretKey = genKey();
         byte[] keyEncoded = secretKey.getEncoded();
         System.out.println("plain key length: " + keyEncoded.length);
-        String plainKey = new String(keyEncoded, "UTF-8");
+        String plainKey = new String(keyEncoded, StandardCharsets.UTF_8);
         System.out.println("plainKey = " + plainKey);
 
 
         Base64.Encoder base64Encoder = Base64.getEncoder();
-        String keyEncodedOfBase64 = new String(base64Encoder.encode(keyEncoded), "UTF-8");
+        String keyEncodedOfBase64 = new String(base64Encoder.encode(keyEncoded), StandardCharsets.UTF_8);
 
         System.out.println("keyEncodedOfBase64 = " + keyEncodedOfBase64);
 
         String msg = "hello, every one";
-        try {
 
-            byte[] encrypt = encrypt(msg.getBytes("utf-8"), secretKey);
-            String encode = new String(base64Encoder.encode(encrypt), "UTF-8");//使可打印
-            System.out.println("encode = " + encode);
+        byte[] encrypt = encrypt(msg.getBytes(StandardCharsets.UTF_8), secretKey);
+        String encode = new String(base64Encoder.encode(encrypt), StandardCharsets.UTF_8);//使可打印
+        System.out.println("encode = " + encode);
 
-            SecretKey secretKeySpecRecovered = parseSecretKey(base64Encoder, keyEncodedOfBase64);
+        SecretKey secretKeySpecRecovered = parseSecretKey(base64Encoder, keyEncodedOfBase64);
 
-            byte[] decrypt = decrypt(encrypt, secretKeySpecRecovered);
-            String s = new String(decrypt, "utf-8");
-            System.out.println("s = " + s);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        byte[] decrypt = decrypt(encrypt, secretKeySpecRecovered);
+        String s = new String(decrypt, StandardCharsets.UTF_8);
+        System.out.println("s = " + s);
 
     }
 

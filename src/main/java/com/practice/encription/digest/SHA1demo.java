@@ -1,8 +1,8 @@
-package com.practice.security.digest;
+package com.practice.encription.digest;
 
 import sun.misc.BASE64Encoder;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -15,9 +15,9 @@ public class SHA1demo {
     public String digest(String content) {
         try {
             MessageDigest sha1 = MessageDigest.getInstance("sha-1");
-            byte[] digest = sha1.digest(content.getBytes("utf-8"));
+            byte[] digest = sha1.digest(content.getBytes(StandardCharsets.UTF_8));
             return new BASE64Encoder().encode(digest);
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         return null;

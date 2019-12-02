@@ -1,8 +1,8 @@
-package com.practice.security.digest;
+package com.practice.encription.digest;
 
 import sun.misc.BASE64Encoder;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -15,9 +15,9 @@ public class MD5demo {
     public String digest(String content) {
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
-            byte[] utf8s = md5.digest(content.getBytes("utf8"));
+            byte[] utf8s = md5.digest(content.getBytes(StandardCharsets.UTF_8));
             return new BASE64Encoder().encode(utf8s);
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         return null;

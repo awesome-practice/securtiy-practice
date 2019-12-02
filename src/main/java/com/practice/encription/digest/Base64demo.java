@@ -1,9 +1,10 @@
-package com.practice.security.digest;
+package com.practice.encription.digest;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author Luo Bao Ding
@@ -27,7 +28,7 @@ public class Base64demo {
         Base64demo demo = new Base64demo();
 
         String msg = "hello";
-        String base64 = demo.byteToBase64(msg.getBytes("utf-8"));
+        String base64 = demo.byteToBase64(msg.getBytes(StandardCharsets.UTF_8));
         System.out.println("base64 = " + base64);
 
         byte[] bytes = demo.base64ToByte(base64);
